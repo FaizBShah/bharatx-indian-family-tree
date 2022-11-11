@@ -1,0 +1,24 @@
+{
+  "name": "bhatatx",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon server.js"
+  },
+  "author": "Faiz Bachoo Shah",
+  "license": "MIT",
+  "dependencies": {
+    "async-captcha": "^1.0.4",
+    "axios": "^1.1.3",
+    "dotenv": "^16.0.3",
+    "pdf-parse": "^1.1.1",
+    "pdfdataextract": "^3.2.0",
+    "pdfreader": "^2.0.0",
+    "puppeteer": "^19.2.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.20"
+  }
+}
