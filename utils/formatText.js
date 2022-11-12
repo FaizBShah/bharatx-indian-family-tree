@@ -34,9 +34,9 @@ function formatText(pdf) {
         husbandName = str.substring(husbandIndex).indexOf(':') !== -1 ? str.substring(husbandIndex).split(':')[1].trim() : str.substring(husbandIndex).split('Name')[1].trim()
       }
 
-      name = name.replace(/\s+/g, ' ').trim()
-      fatherName = fatherName.replace(/\s+/g, ' ').trim()
-      husbandName = husbandName.replace(/\s+/g, ' ').trim()
+      name = name.replace(/\s+/g, ' ').replace(/\-/g, '').trim()
+      fatherName = fatherName.replace(/\s+/g, ' ').replace(/\-/g, '').trim()
+      husbandName = husbandName.replace(/\s+/g, ' ').replace(/\-/g, '').trim()
       console.log(count, name)
       count++
 

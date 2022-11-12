@@ -6,7 +6,8 @@ const createOcrPdf = require('./createOcrPdf')
 const downloadPdf = require('./downloadPdf')
 const readPDF = require('./readPDF')
 const formatText = require('./formatText')
-const getDistrictId = require('./getDistrictId')
+const getWBDistrictId = require('./getWBDistrictId')
+const getTamilDistrictId = require('./getTamilDistrictId')
 const {
   findFather,
   findMother,
@@ -34,7 +35,7 @@ async function automateProcess(name, relativeName, age, state) {
   await page.type('#name1', name)
   await page.type('#txtFName', relativeName)
   await page.select('#ageList', `number:${age}`)
-  await page.select('#nameStateList', 'S25')
+  await page.select('#nameStateList', state === 'West Bengal' ? 'S25' : 'S22')
 
   const captchaImg = await page.$('#captchaDetailImg')
   const base64String = await captchaImg.screenshot({ encoding: "base64" })
@@ -69,11 +70,11 @@ async function automateProcess(name, relativeName, age, state) {
     return document.getElementById('part_no').nextElementSibling.innerText.trim()
   })
 
-  const districtId = getDistrictId(district)
+  const districtId = state === 'West Bengal' ? getWBDistrictId(district) : getTamilDistrictId(district.toLowerCase())
 
   console.log(district, districtId, acId, partId)
 
-  const downloadPromise = await downloadPdf(districtId, acId, partId)
+  const downloadPromise = await downloadPdf(districtId, acId, partId, state)
   await downloadPromise
   
   const ocrPromise = await createOcrPdf()

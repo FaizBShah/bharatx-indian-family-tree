@@ -1,4 +1,4 @@
-const getDistrictId = (district) => {
+const getWBDistrictId = (district) => {
   const districts = {
     'COOCHBEHAR': 1,
     'JALPAIGURI': 2,
@@ -29,4 +29,4 @@ const getDistrictId = (district) => {
   return districts[district]
 }
 
-module.exports = getDistrictId
+module.exports = getWBDistrictId
